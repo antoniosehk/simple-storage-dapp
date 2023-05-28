@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+
+import { SetStringButton } from "./components/SetStringButton";
+import { DisplayStringBox } from "./components/DisplayStringBox";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { useAccount } from "wagmi";
 
 function App() {
+  const { isConnected } = useAccount();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="App-nav">
+        <h1>Simple Storage Dapp</h1>
+        <ConnectButton />
+      </div>
+      <div className="App-header">
+        <DisplayStringBox />
+        {isConnected && <SetStringButton />}
+      </div>
     </div>
   );
 }
