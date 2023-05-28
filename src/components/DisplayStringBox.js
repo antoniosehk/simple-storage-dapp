@@ -17,6 +17,7 @@ const DisplayStringBox = () => {
 
   useEffect(() => {
     try {
+      console.log("Reading from contract...");
       if (myStringFromContract) {
         console.log(myStringFromContract);
         setMyString(myStringFromContract);
