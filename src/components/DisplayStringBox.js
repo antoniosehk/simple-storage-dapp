@@ -16,7 +16,14 @@ const DisplayStringBox = () => {
   });
 
   useEffect(() => {
-    setMyString(myStringFromContract);
+    try {
+      if (myStringFromContract) {
+        console.log(myStringFromContract);
+        setMyString(myStringFromContract);
+      }
+    } catch (error) {
+      console.log("Error fetching my string", error.message);
+    }
   }, [myStringFromContract]);
 
   return (
