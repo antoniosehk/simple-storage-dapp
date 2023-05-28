@@ -9,8 +9,6 @@ import { useAccount } from "wagmi";
 function App() {
   const { isConnected } = useAccount();
 
-  console.log(process.env.REACT_APP_ALCHEMY_ID);
-
   return (
     <div className="App">
       <div className="App-nav">
