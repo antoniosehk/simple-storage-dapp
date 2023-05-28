@@ -8,16 +8,19 @@ import {
 const DisplayStringBox = () => {
   const [myString, setMyString] = useState("");
 
-  const { data: myStringFromContract } = useContractRead({
-    address: SimpleStorageContractAddress,
-    abi: SimpleStorageABI,
-    functionName: "myString",
-    watch: true,
-  });
+  const { data: myStringFromContract, error: myStringFromContractError } =
+    useContractRead({
+      address: SimpleStorageContractAddress,
+      abi: SimpleStorageABI,
+      functionName: "myString",
+      watch: true,
+    });
 
   useEffect(() => {
     try {
       console.log("Reading from contract...");
+      console.log(myStringFromContract);
+      console.log(myStringFromContractError);
       if (myStringFromContract) {
         console.log(myStringFromContract);
         setMyString(myStringFromContract);
